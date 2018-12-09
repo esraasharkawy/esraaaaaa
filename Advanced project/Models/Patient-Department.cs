@@ -7,9 +7,9 @@ namespace Advancedproject.Models
 {
     public class Patient_Department
 {
-    public int p_id { get; set; }
+    public int pid { get; set; }
     public Patient patient { get; set; }
-    public int dept_no { get; set; }
+    public int deptno { get; set; }
     public Department department { get; set; }
 }
 }
