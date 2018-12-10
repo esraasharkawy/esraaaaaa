@@ -1,0 +1,31 @@
+﻿@model Advancedproject.Models.Department
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Masterpage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Department</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Dept_floor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dept_floor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dept_name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dept_name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Deptno">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,35 @@
+﻿@model Advancedproject.Models.Patient_Department
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Masterpage.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Patient_Department</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.patient)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.patient.pid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.department)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.department.Deptno)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="pid" />
+        <input type="hidden" asp-for="deptno" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

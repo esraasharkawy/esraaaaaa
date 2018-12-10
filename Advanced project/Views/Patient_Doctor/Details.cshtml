@@ -1,0 +1,31 @@
+﻿@model Advancedproject.Models.Patient_Doctor
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Masterpage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Patient_Doctor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.patient)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.patient.pid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.doctor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.doctor.Did)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
