@@ -44,18 +44,17 @@ namespace Advancedproject.Migrations
                     D_name = table.Column<string>(nullable: true),
                     D_age = table.Column<int>(nullable: false),
                     D_address = table.Column<string>(nullable: true),
-                    Dept_no = table.Column<int>(nullable: false),
-                    departementDeptno = table.Column<int>(nullable: true)
+                    Dept_no = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Doctors", x => x.Did);
                     table.ForeignKey(
-                        name: "FK_Doctors_Departments_departementDeptno",
-                        column: x => x.departementDeptno,
+                        name: "FK_Doctors_Departments_Dept_no",
+                        column: x => x.Dept_no,
                         principalTable: "Departments",
                         principalColumn: "Deptno",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -65,18 +64,17 @@ namespace Advancedproject.Migrations
                     Rno = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     R_floor = table.Column<int>(nullable: false),
-                    dept_no = table.Column<int>(nullable: false),
-                    departmentDeptno = table.Column<int>(nullable: true)
+                    dept_no = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Rooms", x => x.Rno);
                     table.ForeignKey(
-                        name: "FK_Rooms_Departments_departmentDeptno",
-                        column: x => x.departmentDeptno,
+                        name: "FK_Rooms_Departments_dept_no",
+                        column: x => x.dept_no,
                         principalTable: "Departments",
                         principalColumn: "Deptno",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,18 +110,17 @@ namespace Advancedproject.Migrations
                     E_salary = table.Column<decimal>(nullable: false),
                     E_phone = table.Column<int>(nullable: false),
                     E_gender = table.Column<string>(nullable: true),
-                    D_id = table.Column<int>(nullable: false),
-                    doctorDid = table.Column<int>(nullable: true)
+                    D_id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Employees", x => x.Eid);
                     table.ForeignKey(
-                        name: "FK_Employees_Doctors_doctorDid",
-                        column: x => x.doctorDid,
+                        name: "FK_Employees_Doctors_D_id",
+                        column: x => x.D_id,
                         principalTable: "Doctors",
                         principalColumn: "Did",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -151,14 +148,14 @@ namespace Advancedproject.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Doctors_departementDeptno",
+                name: "IX_Doctors_Dept_no",
                 table: "Doctors",
-                column: "departementDeptno");
+                column: "Dept_no");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employees_doctorDid",
+                name: "IX_Employees_D_id",
                 table: "Employees",
-                column: "doctorDid");
+                column: "D_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Patient_Departments_deptno",
@@ -171,9 +168,9 @@ namespace Advancedproject.Migrations
                 column: "Did");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rooms_departmentDeptno",
+                name: "IX_Rooms_dept_no",
                 table: "Rooms",
-                column: "departmentDeptno");
+                column: "dept_no");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

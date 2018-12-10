@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Advancedproject.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.ProjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace Advancedproject.Data
@@ -49,6 +51,22 @@ namespace Advancedproject.Data
             .HasOne(pr => pr.doctor)
             .WithMany(b => b.patientlist)
           .HasForeignKey(pr => pr.Did);
+
+            modelBuilder.Entity<Doctor>()
+            .HasOne(d => d.departement)
+            .WithMany(dl => dl.doctorlist)
+            .HasForeignKey(d => d.Dept_no);
+
+            modelBuilder.Entity<Employee>()
+            .HasOne(d => d.doctor)
+            .WithMany(dl => dl.employeelist)
+            .HasForeignKey(d => d.D_id);
+
+            modelBuilder.Entity<Room>()
+            .HasOne(d => d.department)
+            .WithMany(dl => dl.roomlist)
+            .HasForeignKey(d => d.dept_no);
+
         }
 
     }
